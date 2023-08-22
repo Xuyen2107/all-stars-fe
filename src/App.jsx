@@ -1,11 +1,22 @@
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import NavLeft from "./components/Layouts/NavLeft/NavLeft";
+import Home from "./page/Home/Home";
+import Info from "./page/Info/Info";
+import Login from "./page/Login/Login";
+import Register from "./page/Register/Register";
+
 const App = () => {
-  return (
-    <div className="flex gap-4">
-      <div className="w-[40px] h-[40px] bg-red-400">a</div>
-      <div className="w-[40px] h-[40px] bg-red-400">b</div>
-      <div className="w-[40px] h-[40px] bg-red-400">c</div>
-    </div>
-  );
+    return (
+        <Router>
+            <NavLeft />
+            <Routes>
+                <Route path="/" element={<Home />} />
+                <Route path="/login" element={<Login />} />
+                <Route path="/register" element={<Register />} />
+                <Route path="/info" element={<Info />} />
+            </Routes>
+        </Router>
+    );
 };
 
 export default App;
