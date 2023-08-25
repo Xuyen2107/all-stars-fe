@@ -1,0 +1,32 @@
+* {
+   box-sizing: border-box;
+   margin: 0;
+   padding: 0;
+}
+
+.formGroup {
+   position: relative;
+}
+
+.formLabel {
+   position: absolute;
+   top: 50%;
+   transform: translateY(-50%);
+   left: 0px;
+   user-select: none;
+   pointer-events: none;
+   transition: 0.25s ease;
+   font-size: 16px;
+}
+.formInput {
+   border-bottom: 2px solid black;
+   outline: none;
+   width: 100%;
+   padding: 5px 0;
+   font-size: 16px;
+}
+
+.formInput:not(:placeholder-shown) + .formLabel,
+.formInput:focus + .formLabel {
+   top: -5px;
+}
