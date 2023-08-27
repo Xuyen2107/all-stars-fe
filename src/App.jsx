@@ -1,5 +1,5 @@
 import { Routes, Route } from "react-router-dom";
-import NavLeft from "./components/Layouts/NavLeft/NavLeft";
+import Header from "./components/layouts/Header/Header.jsx";
 import AuthState from "./context/authContext/authState.jsx";
 import Homepage from "./pages/HomePage/Home";
 import Login from "./pages/AuthenticationPage/Login/Login";
@@ -8,7 +8,7 @@ import Register from "./pages/AuthenticationPage/Register/Register";
 const App = () => {
   return (
     <AuthState>
-      <NavLeft />
+      <Header />
       <Routes>
         <Route path="/" element={<Homepage />} />
         <Route path="/login" element={<Login />} />
