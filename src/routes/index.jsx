@@ -9,8 +9,8 @@ import Profile from "../pages/Profile/Profile";
 
 const PublicRoutes = [
   { path: "/", component: Homepage },
-  // { path: '/login', component: Login },
-  // { path: '/register', component: Register },
+  { path: "/login", component: Login },
+  { path: "/register", component: Register },
 ];
 const SideBarRoutes1 = [
   { path: "/newfeed", component: Newfeed, name: "Newfeed" },
