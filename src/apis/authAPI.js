@@ -7,3 +7,4 @@ const authAPI = {
 };
 
 export default authAPI;
+3

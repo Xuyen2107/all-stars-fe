@@ -1,0 +1,15 @@
+.wrapper {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+.container {
+  width: 100%;
+  display: flex;
+  padding: 15px;
+}
+.content {
+  flex: 1;
+  background-color: #ccc;
+  min-height: 1000px;
+}
