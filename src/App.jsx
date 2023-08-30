@@ -4,6 +4,7 @@ import AuthState from "./context/authContext/authState.jsx";
 import Homepage from "./pages/HomePage/Home";
 import Login from "./pages/AuthenticationPage/Login/Login";
 import Register from "./pages/AuthenticationPage/Register/Register";
+import "./Global.css";
 
 const App = () => {
   return (
