@@ -7,7 +7,6 @@ import "./Global.css";
 const App = () => {
   return (
     <AuthState>
-      <Header />
       <Routes>
         {PublicRoutes.map((route, index) => {
           let Page = route.component;
