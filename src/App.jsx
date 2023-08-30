@@ -8,12 +8,13 @@ import Register from "./pages/AuthenticationPage/Register/Register";
 const App = () => {
   return (
     <AuthState>
-      <Header />
+      {/* <Header /> */}
       <Routes>
-        <Route path="/" element={<Homepage />} />
+        {/* <Route path="/" element={<Homepage />} /> */}
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
       </Routes>
+      {/* <Register /> */}
     </AuthState>
   );
 };

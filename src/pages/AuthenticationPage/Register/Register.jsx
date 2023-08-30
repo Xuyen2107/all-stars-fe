@@ -1,14 +1,19 @@
 import { useFormik } from "formik";
-import useLogin from "../../../hooks/useLogin.js";
+import { NavLink } from "react-router-dom";
 import * as Yup from "yup";
+import useLogin from "../../../hooks/useLogin.js";
 import Input from "../../../components/Input/Input.jsx";
 import Button from "../../../components/Button/Button.jsx";
+import styles from "./Register.module.css";
 
 const RegisterSchema = Yup.object().shape({
-  fullname: Yup.string().required("Fullname is required"),
+  fullName: Yup.string().required("Full name is required"),
   email: Yup.string()
     .email("Email does not valid")
     .required("Email is required"),
+  phoneNumber: Yup.string()
+    .matches(/^0\d{9}$/, "not")
+    .required(),
   password: Yup.string().min(6).required(),
 });
 
@@ -16,61 +21,76 @@ const Register = () => {
   const { loading, error, onSubmit } = useLogin();
   const { values, handleSubmit, handleChange, isValid, errors } = useFormik({
     initialValues: {
+      fullName: "",
       email: "",
+      phoneNumber: "",
       password: "",
-      fullname: "",
     },
     onSubmit: (values) => onSubmit(values),
     validationSchema: RegisterSchema,
   });
 
   return (
-    <div className="max-w-md mx-auto">
-      <form onSubmit={handleSubmit}>
-        <h2 className="text-2xl font-bold mb-4">Register</h2>
-        <div>
-          <Input
-            labelName="Fullname"
-            id="fullname"
-            name="fullname"
-            value={values.fullname}
-            onChange={handleChange}
-          />
-          {errors?.fullname && (
-            <p className="text-red-500 text-sm mt-1 ">{errors.fullname}</p>
-          )}
-        </div>
+    <div className={styles.register}>
+      <form className={styles.registerForm} onSubmit={handleSubmit}>
+        <h2 className="text-3xl font-bold mb-6 text-purple-500">
+          Register to make friends
+        </h2>
 
-        <div>
-          <Input
-            labelName="Email"
-            type="email"
-            id="email"
-            name="email"
-            value={values.email}
-            onChange={handleChange}
-          />
-          {errors?.email && (
-            <p className="text-red-500 text-sm mt-1 ">{errors.email}</p>
-          )}
-        </div>
-        <div>
-          <Input
-            labelName="Password"
-            type="password"
-            id="password"
-            name="password"
-            value={values.password}
-            onChange={handleChange}
-          />
-          {errors?.password && (
-            <p className="text-red-500 text-sm mt-1 ">{errors.password}</p>
-          )}
-        </div>
+        <Input
+          labelName="Full Name"
+          type="text"
+          name="fullName"
+          value={values.fullName}
+          onChange={handleChange}
+          err={errors.fullName}
+        />
+
+        <Input
+          labelName="Email"
+          type="email"
+          name="email"
+          value={values.email}
+          onChange={handleChange}
+          err={errors.email}
+        />
+
+        <Input
+          labelName="Phone Number"
+          type="tel"
+          name="phoneNumber"
+          value={values.phoneNumber}
+          onChange={handleChange}
+          err={errors.phoneNumber}
+        />
+
+        <Input
+          labelName="Password"
+          type="password"
+          name="password"
+          value={values.password}
+          onChange={handleChange}
+          err={errors.password}
+        />
+
         {error && <p className="to-red-600">{error}</p>}
-        <Button className="w-full mt-5" type="submit" disabled={!isValid}>
-          {loading ? "Loading..." : "Login"}
+        <Button
+          className="mt-5 cursor-pointer"
+          type="submit"
+          disabled={!isValid}
+        >
+          {loading ? "Loading..." : "Sign up"}
         </Button>
+
+        <div className="flex gap-1 mt-2">
+          <p className="text-white">You have account?</p>
+          <NavLink
+            className="text-purple-500 hover:text-purple-600"
+            to="/login"
+          >
+            Login
+          </NavLink>
+        </div>
       </form>
     </div>
   );

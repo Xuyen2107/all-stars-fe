@@ -1,21 +1,23 @@
 import PropTypes from "prop-types";
 import styles from "./Input.module.css";
 
-const Input = ({ labelName, id, type, value, name, onChange }) => {
+const Input = ({ labelName, type, value, name, onChange, err }) => {
   return (
     <div className={styles.formGroup}>
-      <label className="block text-gray-700 font-bold mb-2" htmlFor={id}>
-        {labelName}
-      </label>
-      <input
-        className="w-full border border-gray-400 rounded py-2 px-3 focus:outline-none focus:border-blue-500"
-        id={id}
-        type={type}
-        name={name}
-        value={value}
-        onChange={onChange}
-        placeholder=""
-      />
+      <div className={styles.formGroupHeader}>
+        <input
+          className={styles.formInput}
+          type={type}
+          name={name}
+          value={value}
+          onChange={onChange}
+          placeholder=" "
+        />
+        <label className={styles.formLabel} htmlFor="">
+          {labelName}
+        </label>
+      </div>
+      {err && <p className="text-red-500 ">{err}</p>}
     </div>
   );
 };
@@ -27,6 +29,7 @@ Input.propTypes = {
   value: PropTypes.string.isRequired,
   name: PropTypes.string.isRequired,
   onChange: PropTypes.func.isRequired,
+  err: PropTypes.string.isRequired,
 };
 
 export default Input;
