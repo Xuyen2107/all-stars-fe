@@ -1,8 +1,5 @@
 import { Routes, Route } from "react-router-dom";
-<<<<<<< HEAD
-import Header from "./components/layouts/Header/Header.jsx";
-=======
->>>>>>> phunh
+
 import AuthState from "./context/authContext/authState.jsx";
 import DefaultLayout from "./components/Layouts/DefaultLayout/index.jsx";
 import { PublicRoutes } from "./routes/index.jsx";
@@ -11,10 +8,6 @@ import "./Global.css";
 const App = () => {
   return (
     <AuthState>
-<<<<<<< HEAD
-      <Header />
-=======
->>>>>>> phunh
       <Routes>
         {PublicRoutes.map((route, index) => {
           let Page = route.component;
