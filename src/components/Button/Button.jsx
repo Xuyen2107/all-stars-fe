@@ -10,7 +10,7 @@ const Button = ({
 }) => {
   let buttonStyles = "py-2 px-4 rounded";
   if (variant === "primary") {
-    buttonStyles += ` bg-blue-500 text-white hover:bg-blue-600 ${className}`;
+    buttonStyles += ` bg-purple-500 text-white hover:bg-purple-600  ${className}`;
   } else if (variant === "secondary") {
     buttonStyles += ` bg-gray-500 text-white hover:bg-gray-600  ${className}`;
   } else if (variant === "danger") {
@@ -18,6 +18,8 @@ const Button = ({
   } else {
     buttonStyles += ` bg-gray-500 text-white hover:bg-gray-600 ${className}`;
   }
+
+
 
   return (
     <button

@@ -1,32 +1,38 @@
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
+.formGroup {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  margin-bottom: 20px;
 }
 
-.formGroup {
+.formGroupHeader {
   position: relative;
+  width: 100%;
+}
+
+.formInput {
+  border-bottom: 2px solid #fff;
+  padding: 5px 0;
+  font-size: 16px;
+  color: #fff;
 }
 
 .formLabel {
   position: absolute;
   top: 50%;
+  left: 0;
   transform: translateY(-50%);
-  left: 0px;
   user-select: none;
   pointer-events: none;
   transition: 0.25s ease;
   font-size: 16px;
-}
-.formInput {
-  border-bottom: 2px solid black;
-  outline: none;
-  width: 100%;
-  padding: 5px 0;
-  font-size: 16px;
+  font-weight: 500;
+  color: #fff;
 }
 
 .formInput:not(:placeholder-shown) + .formLabel,
 .formInput:focus + .formLabel {
-  top: -5px;
+  top: -6px;
+  color: #a855f7;
+  
 }
