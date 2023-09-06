@@ -1,6 +1,6 @@
 import { Routes, Route } from "react-router-dom";
 import AuthState from "./context/authContext/authState.jsx";
-import DefaultLayout from "./components/Layouts/DefaultLayout/index.jsx";
+import Layout from "./components/Layouts/DefaultLayout/index.jsx";
 import { PublicRoutes } from "./routes/index.jsx";
 import "./Global.css";
 
@@ -9,8 +9,7 @@ const App = () => {
     <AuthState>
       <Routes>
         {PublicRoutes.map((route, index) => {
-          let Page = route.component;
-          const Layout = DefaultLayout;
+          const Page = route.component;
           return (
             <Route
               key={index}
