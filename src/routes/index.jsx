@@ -7,10 +7,10 @@ import Stories from "../pages/Stories/Stories";
 import PopularGroup from "../pages/Popular Group/PopularGroup";
 import Profile from "../pages/Profile/Profile";
 
-const PublicRoutes = [
-  { path: "/", component: Homepage },
-  { path: "/login", component: Login },
-  { path: "/register", component: Register },
+const routes = [
+  { path: "/", component: Homepage, auth: true },
+  { path: "/login", component: Login, auth: false },
+  { path: "/register", component: Register, auth: false },
 ];
 const SideBarRoutes1 = [
   { path: "/newfeed", component: Newfeed, name: "Newfeed" },
@@ -20,4 +20,4 @@ const SideBarRoutes1 = [
   { path: "/profile", component: Profile, name: "Profile" },
 ];
 
-export { PublicRoutes, SideBarRoutes1 };
+export { routes, SideBarRoutes1 };

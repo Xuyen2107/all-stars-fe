@@ -23,6 +23,8 @@ const AuthState = ({ children }) => {
     }
   };
 
+  
+
   const handleLogout = () => {
     setAuth({
       isAuthenticated: false,

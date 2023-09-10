@@ -1,9 +1,11 @@
 import { useContext, useState } from "react";
 import AuthContext from "../context/authContext/authContext";
 import authAPI from "../apis/authAPI";
+import { useNavigate } from "react-router-dom";
 const useLogin = () => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
+  const navigate = useNavigate();
 
   const { handleLogin } = useContext(AuthContext);
 

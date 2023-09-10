@@ -1,5 +1,35 @@
+import { useState } from "react";
+import PostDefault from "../../components/PostDefault/PostDefault";
+import SocialActions from "../../components/SocialActions/SocialActions";
+import PostPopUp from "../../components/layouts/PostPopUp/PostPopUp";
+import PostImage from "../../components/PostImage/PostImage";
+
 const Home = () => {
-  return <h1>Home Page</h1>;
+  const [show, setShow] = useState(false);
+  console.log(show);
+  return (
+    <div>
+    
+      <div className="w-[500px]">
+        <PostDefault />
+        <PostImage />
+        <SocialActions
+          handleCommentClick={() => {
+            setShow(true);
+          }}
+        />
+      </div>
+      {show && (
+        <div>
+          <PostPopUp
+            handleCloseClick={() => {
+              setShow(false);
+            }}
+          />
+        </div>
+      )}
+    </div>
+  );
 };
 
 export default Home;

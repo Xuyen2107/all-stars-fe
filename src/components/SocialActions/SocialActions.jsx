@@ -1,47 +1,48 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import styles from "./SocialActions.module.css";
+import PostContext from "../../context/postContext/postContext";
 
-const SocialActions = () => {
-  const [like, setLike] = useState(false);
+const SocialActions = ({
+  handleLikeClick,
+  handleCommentClick,
+  handleShareClick,
+  likeNumber,
+  commentNumber,
+}) => {
+  const [isLike, setIsLike] = useState(false);
   return (
-    <div className="m-4">
-      <div className="flex justify-around border-b-2 border-t-2 pt-2 pb-2 mb-1">
+    <div className="flex justify-between border-y-2 border-gray-300 py-1 my-2">
+      <div className="flex gap-10">
         <button
-          className="flex gap-1"
+          className="flex gap-1 px-2 py-1 hover:bg-gray-200"
           onClick={() => {
-            setLike(!like);
+            handleLikeClick;
           }}
         >
-          <i
-            className={`fa-regular fa-thumbs-up ${like ? "text-blue-400" : ""}`}
-          ></i>
-          <p className={like ? "text-blue-400" : ""}>Like</p>
+          {isLike ? (
+            <i className="fa-solid fa-heart text-red-500"></i>
+          ) : (
+            <i className="fa-regular fa-heart"></i>
+          )}
+          <p>{likeNumber} Like</p>
         </button>
-        <button className="flex gap-1">
+        <button
+          className="flex gap-1 px-2 py-1 hover:bg-gray-200"
+          onClick={handleCommentClick}
+        >
           <i className="fa-regular fa-comment"></i>
-          <p>Comment</p>
-        </button>
-        <button className="flex gap-1">
-          <i className="fa-regular fa-share-from-square"></i>
-          <p>Share</p>
+          <p>{commentNumber} Comment</p>
         </button>
       </div>
-      <div className="flex justify-items-start gap-2 w-full">
-        <img
-          className="w-8 h-8 rounded-full"
-          src="https://gotrangtri.vn/wp-content/uploads/2019/01/anh-bia-1-4.jpg"
-          alt=""
-        />
-        <form className="w-full relative">
-          <textarea
-            className="border border-black border-solid rounded-xl w-full p-2"
-            placeholder="Write comment..."
-          />
-          <button className="absolute bottom-2 right-2">
-            <i class="fa-solid fa-angles-right"></i>
-          </button>
-        </form>
-      </div>
+      <button
+        className="flex gap-1 px-2 py-1 hover:bg-gray-200"
+        onClick={() => {
+          handleShareClick;
+        }}
+      >
+        <i className="fa-regular fa-share-from-square"></i>
+        <p>Share</p>
+      </button>
     </div>
   );
 };
