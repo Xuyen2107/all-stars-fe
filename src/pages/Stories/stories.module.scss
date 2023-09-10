@@ -1,0 +1,41 @@
+.wrapper {
+  height: 100vh;
+}
+.body {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 24px 24px;
+  font-size: 25px;
+  background-color: rgb(238 242 255);
+  gap: 10px;
+  box-shadow: rgb(243 244 246);
+  border-radius: 15px;
+}
+.boxIcon {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+.boxInput {
+  display: flex;
+  height: 40px;
+  background-color: rgb(243 244 246);
+  border-radius: 8px;
+  align-items: center;
+}
+.input {
+  display: flex;
+  align-items: center;
+  padding: 10px;
+}
+.icon {
+  height: 40px;
+  width: 40px;
+  line-height: 40px;
+  border-radius: 10px;
+  background-color: rgb(243 244 246);
+  text-align: center;
+  font-size: 25px;
+}

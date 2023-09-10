@@ -1,7 +1,6 @@
 import styles from './SideBar.module.scss'
-import Button from '../../../Button/Button'
 import NavLeft from '../../NavLeft'
-import { headerHeight } from '../../../../utils'
+import ItemSB from '../../../ItemSideBar/ItemSideBar'
 
 const MenuSideBar = [
     {
@@ -54,37 +53,32 @@ const morePages = [
 ]
 const Account = [
     {
-        icon: <i class="fa-solid fa-inbox"></i>,
-        title: "Author Profile",
+        icon: <i class="fa-solid fa-gear"></i>,
+        title: "Settings",
         to: "/profile"
     },
     {
-        icon: <i class="fa-solid fa-house"></i>,
-        title: "Author Profile",
-        to: "/profile"
+        icon: <i class="fa-regular fa-clock"></i>,
+        title: "Analytics",
+        to: "/analytics"
     },
     {
-        icon: <i class="fa-solid fa-location-dot"></i>,
-        title: "Author Profile",
-        to: "/profile"
+        icon: <i class="fa-regular fa-message"></i>,
+        title: "Chat",
+        to: "/chat"
     },
 
 ]
 const SideBar = () => {
-
-
     return (
 
-        <div className={`${styles.content}`}>
+        <div className={styles.content}>
             <div className={styles.container} >
                 <div className={styles.wrapper}>
                     <NavLeft >
                         {MenuSideBar.map((item, index) => {
                             return (
-                                <Button leftIcon={item.icon} to={item.to}>
-                                    {item.title}
-                                </Button>
-                            )
+                                <ItemSB leftIcon={item.icon} title={item.title} path={item.to} />)
                         })}
                     </NavLeft>
                 </div>
@@ -92,10 +86,7 @@ const SideBar = () => {
                     <NavLeft >
                         {morePages.map((item, index) => {
                             return (
-                                <Button leftIcon={item.icon} to={item.to}>
-                                    {item.title}
-                                </Button>
-                            )
+                                <ItemSB leftIcon={item.icon} title={item.title} path={item.to} />)
                         })}
                     </NavLeft>
                 </div>
@@ -103,10 +94,7 @@ const SideBar = () => {
                     <NavLeft>
                         {Account.map((item, index) => {
                             return (
-                                <Button leftIcon={item.icon} to={item.to}>
-                                    {item.title}
-                                </Button>
-                            )
+                                <ItemSB leftIcon={item.icon} title={item.title} path={item.to} />)
                         })}
                     </NavLeft>
                 </div>
