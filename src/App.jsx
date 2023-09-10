@@ -18,11 +18,6 @@ const App = () => {
       <Routes>
         {routes.map(({ path, component, auth }, index) => {
           let Page = component;
-          const Layout = DefaultLayout;
-          console.log({
-            auth,
-            path,
-          });
           if (auth) {
             return (
               <Route
@@ -33,17 +28,7 @@ const App = () => {
             );
           }
 
-          return (
-            <Route
-              key={index}
-              path={path}
-              element={
-                <Layout>
-                  <Page />
-                </Layout>
-              }
-            />
-          );
+          return <Route key={index} path={path} element={<Page />} />;
         })}
       </Routes>
     </AuthState>

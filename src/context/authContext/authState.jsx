@@ -9,21 +9,28 @@ const AuthState = ({ children }) => {
     user: {},
   });
 
+  const [authInfoInProgress, setAuthInfoInProgress] = useState(false);
+
   const handleLogin = async () => {
     try {
+      setAuthInfoInProgress(true);
       const response = await authAPI.authInfo();
       const data = response.data;
-
+      console.log({ data });
       setAuth({
         isAuthenticated: true,
         user: data.userInfo,
       });
     } catch (error) {
+      setAuth({
+        isAuthenticated: false,
+        user: {},
+      });
       console.log(error);
+    } finally {
+      setAuthInfoInProgress(false);
     }
   };
-
-  
 
   const handleLogout = () => {
     setAuth({
@@ -32,10 +39,11 @@ const AuthState = ({ children }) => {
     });
   };
 
-  useEffect(() => {
+  useEffect(async () => {
     const accessToken = localStorage.getItem("accessToken");
     if (accessToken) {
-      handleLogin();
+      console.log("Access token: " + accessToken);
+      await handleLogin();
     }
   }, []);
 
@@ -45,6 +53,7 @@ const AuthState = ({ children }) => {
         auth,
         handleLogin,
         handleLogout,
+        authInfoInProgress,
       }}
     >
       {children}

@@ -4,8 +4,8 @@ const Badge = () => {
   return (
     <Link to='/badge'>
       <h1>Badge Page</h1>;
-    </Link>
+    </Link >
   )
-};
+}
 
 export default Badge;

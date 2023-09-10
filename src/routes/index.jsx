@@ -11,13 +11,11 @@ const routes = [
   { path: "/", component: Homepage, auth: true },
   { path: "/login", component: Login, auth: false },
   { path: "/register", component: Register, auth: false },
-];
-const SideBarRoutes1 = [
-  { path: "/newfeed", component: Newfeed, name: "Newfeed" },
-  { path: "/bage", component: Badge, name: "Badge" },
-  { path: "/stories", component: Stories, name: "Stories" },
-  { path: "/popular", component: PopularGroup, name: "PopularGroup" },
-  { path: "/profile", component: Profile, name: "Profile" },
+  { path: "/newfeed", component: Newfeed, auth: true },
+  { path: "/badge", component: Badge, auth: true },
+  { path: "/stories", component: Stories, auth: true },
+  { path: "/popular", component: PopularGroup, auth: true },
+  { path: "/profile", component: Profile, auth: true },
 ];
 
-export { routes, SideBarRoutes1 };
+export { routes };
