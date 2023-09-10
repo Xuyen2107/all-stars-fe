@@ -1,5 +1,5 @@
 const Newfeed = () => {
-  return <h1>Newfeed Page</h1>;
+  return <h1>NewFeed</h1>
 };
 
 export default Newfeed;
