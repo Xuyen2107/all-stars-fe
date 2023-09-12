@@ -1,22 +1,28 @@
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import AuthContext from "./authContext.js";
 import authAPI from "../../apis/authAPI.js";
-import propTypes from "prop-types";
+import PropTypes from "prop-types";
 
 const AuthState = ({ children }) => {
-  const [auth, setAuth] = useState({
-    isAuthenticated: false,
-    user: {},
-  });
+  const [auth, setAuth] = useState({});
 
-  const [authInfoInProgress, setAuthInfoInProgress] = useState(false);
+  useEffect(() => {
+    fetchData();
+  }, []);
 
+  const fetchData = async () => {
+    const accessToken = localStorage.getItem("accessToken");
+    if (accessToken) {
+      await handleLogin();
+    } else {
+      handleLogout();
+    }
+  };
+  
   const handleLogin = async () => {
     try {
-      setAuthInfoInProgress(true);
       const response = await authAPI.authInfo();
       const data = response.data;
-      console.log({ data });
       setAuth({
         isAuthenticated: true,
         user: data.userInfo,
@@ -27,8 +33,6 @@ const AuthState = ({ children }) => {
         user: {},
       });
       console.log(error);
-    } finally {
-      setAuthInfoInProgress(false);
     }
   };
 
@@ -39,21 +43,12 @@ const AuthState = ({ children }) => {
     });
   };
 
-  useEffect(async () => {
-    const accessToken = localStorage.getItem("accessToken");
-    if (accessToken) {
-      console.log("Access token: " + accessToken);
-      await handleLogin();
-    }
-  }, []);
-
   return (
     <AuthContext.Provider
       value={{
         auth,
         handleLogin,
         handleLogout,
-        authInfoInProgress,
       }}
     >
       {children}
@@ -61,8 +56,8 @@ const AuthState = ({ children }) => {
   );
 };
 
-AuthState.propTypes = {
-  children: propTypes.node,
+AuthState.PropTypes = {
+  children: PropTypes.node,
 };
 
 export default AuthState;

@@ -6,11 +6,9 @@ import PostImage from "../../components/PostImage/PostImage";
 
 const Home = () => {
   const [show, setShow] = useState(false);
-  console.log(show);
   return (
-    <div>
-    
-      <div className="w-[500px]">
+    <div className="w-full">
+      <div className="">
         <PostDefault />
         <PostImage />
         <SocialActions

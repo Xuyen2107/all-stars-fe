@@ -1,37 +1,41 @@
-import { Routes, Route } from "react-router-dom";
-import AuthState from "./context/authContext/authState.jsx";
-import DefaultLayout from "./components/Layouts/DefaultLayout/index.jsx";
-import { routes } from "./routes/index.jsx";
-import "./Global.css";
-import PostDefault from "./components/PostDefault/PostDefault.jsx";
-import Comment from "./components/Comment/Comment.jsx";
-import PostPopUp from "./components/layouts/PostPopUp/PostPopUp.jsx";
-import PostState from "./context/postContext/postState.jsx";
-import SocialActions from "./components/SocialActions/SocialActions.jsx";
+import React, { useContext, useState, useEffect, useLayoutEffect } from "react";
+import { Routes, Route, Router, useNavigate } from "react-router-dom";
+import AuthContext from "./context/authContext/authContext.js";
 import Home from "./pages/HomePage/Home.jsx";
-import PostImage from "./components/PostImage/PostImage.jsx";
-import PrivateRoute from "./components/PrivateRoute/PrivateRoute.jsx";
+import Login from "./pages/AuthenticationPage/Login/Login.jsx";
+import Register from "./pages/AuthenticationPage/Register/Register.jsx";
+import Header from "./components/layouts/DefaultLayout/Header/index.jsx";
+import SideBar from "./components/layouts/DefaultLayout/SideBar/SideBar.jsx";
 
 const App = () => {
-  return (
-    <AuthState>
-      <Routes>
-        {routes.map(({ path, component, auth }, index) => {
-          let Page = component;
-          if (auth) {
-            return (
-              <Route
-                key={index}
-                path={path}
-                element={<PrivateRoute component={Page} />}
-              />
-            );
-          }
+  const { auth } = useContext(AuthContext);
+  const isLogin = auth?.isAuthenticated;
+  console.log(isLogin);
 
-          return <Route key={index} path={path} element={<Page />} />;
-        })}
-      </Routes>
-    </AuthState>
+  return (
+    <>
+      {isLogin === true && (
+        <Routes>
+          <div className="flex flex-col items-center">
+            <Header />
+            <div className="flex w-full p-4">
+              <SideBar />
+              <div className="  w-[500px] ">
+                <Route path="/" element={<Home />} />
+              </div>
+            </div>
+          </div>
+        </Routes>
+      )}
+
+      {isLogin === false && (
+        <Routes>
+          <Route path="/" element={<Login />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/register" element={<Register />} />
+        </Routes>
+      )}
+    </>
   );
 };
 
