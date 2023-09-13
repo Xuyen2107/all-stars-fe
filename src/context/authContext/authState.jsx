@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import AuthContext from "./authContext.js";
 import authAPI from "../../apis/authAPI.js";
-import { node } from "prop-types";
+import propTypes from "prop-types";
 
 const AuthState = ({ children }) => {
   const [auth, setAuth] = useState({
@@ -51,7 +51,7 @@ const AuthState = ({ children }) => {
 };
 
 AuthState.propTypes = {
-  children: node,
+  children: propTypes.node,
 };
 
 export default AuthState;
