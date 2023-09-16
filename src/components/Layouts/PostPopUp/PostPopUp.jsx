@@ -7,17 +7,15 @@ import PostImage from "../../PostImage/PostImage";
 
 const PostPopUp = ({ handleCloseClick }) => {
   return (
-    <div
-      className={`${styles.popUp} absolute grid place-items-center h-screen w-full top-0 left-0 z-10`}
-    >
-      <div className="relative h-[90vh] shadow-lg shadow-gray-500">
-        <div className="grid place-items-center py-3 border-b-2 sticky top-0 bg-white text-2xl font-bold">
+    <div className={`${styles.popUp} w-full h-full`}>
+      <div className="relative h-full w-full flex flex-col">
+        <div className="sticky grid place-items-center py-3 border-b-2  top-0 bg-white text-2xl font-bold z-10">
           <span>Nhi's Post</span>
           <button
             className="absolute right-4 top-2 w-10 h-10 grid place-items-center text-xl bg-gray-200 rounded-full"
             onClick={handleCloseClick}
           >
-            <i class="fa-solid fa-xmark"></i>
+            <i className="fa-solid fa-xmark"></i>
           </button>
         </div>
 
@@ -45,7 +43,7 @@ const PostPopUp = ({ handleCloseClick }) => {
                   placeholder="Write comment"
                 />
                 <button className="absolute right-4 bottom-4">
-                  <i class="fa-solid fa-paper-plane text-blue-400"></i>
+                  <i className="fa-solid fa-paper-plane text-blue-400"></i>
                 </button>
               </form>
             </div>

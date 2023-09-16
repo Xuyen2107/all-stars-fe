@@ -6,10 +6,8 @@ import PostImage from "../../components/PostImage/PostImage";
 
 const Home = () => {
   const [show, setShow] = useState(false);
-  console.log(show);
   return (
-    <div>
-    
+    <div className="w-full flex items-center justify-center">
       <div className="w-[500px]">
         <PostDefault />
         <PostImage />
@@ -20,7 +18,7 @@ const Home = () => {
         />
       </div>
       {show && (
-        <div>
+        <div className="absolute w-full h-screen top-0 left-0 z-10">
           <PostPopUp
             handleCloseClick={() => {
               setShow(false);

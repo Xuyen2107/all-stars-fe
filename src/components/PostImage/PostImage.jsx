@@ -13,9 +13,9 @@ const PostImage = () => {
   ];
 
   return (
-    <div className="">
+    <div className=" h-[600px]">
       <Carousel
-        className="relative"
+        className="relative h-full"
         showThumbs={false}
         infiniteLoop={true}
         showStatus={false}
@@ -43,9 +43,9 @@ const PostImage = () => {
         {postImage.map((image, index) => (
           <div
             key={index}
-            className="flex items-center justify-center h-[600px] bg-black"
+            className="flex items-center justify-center bg-black"
           >
-            <img src={image} alt={`Image ${index}`} />
+            <img className="h-full" src={image} alt={`Image ${index}`} />
           </div>
         ))}
       </Carousel>
