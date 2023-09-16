@@ -1,34 +1,35 @@
 import { useFormik } from "formik";
 import { NavLink } from "react-router-dom";
 import * as Yup from "yup";
-import useLogin from "../../../hooks/useLogin.js";
 import Input from "../../../components/Input/Input.jsx";
 import Button from "../../../components/Button/Button.jsx";
 import styles from "./Register.module.css";
+import useSignup from "../../../hooks/useSigup.js";
 
 const RegisterSchema = Yup.object().shape({
-  fullName: Yup.string().required("Full name is required"),
+  username: Yup.string().required("Full name is required"),
   email: Yup.string()
     .email("Email does not valid")
     .required("Email is required"),
-  phoneNumber: Yup.string()
+  phone: Yup.string()
     .matches(/^0\d{9}$/, "not")
     .required(),
   password: Yup.string().min(6).required(),
 });
 
 const Register = () => {
-  const { loading, error, onSubmit } = useLogin();
-  const { values, handleSubmit, handleChange, isValid, errors } = useFormik({
-    initialValues: {
-      fullName: "",
-      email: "",
-      phoneNumber: "",
-      password: "",
-    },
-    onSubmit: (values) => onSubmit(values),
-    validationSchema: RegisterSchema,
-  });
+  const { loading, err, onSubmit } = useSignup();
+  const { values, handleSubmit, handleChange, isValid, errors, getFieldProps } =
+    useFormik({
+      initialValues: {
+        username: "",
+        email: "",
+        phone: "",
+        password: "",
+      },
+      onSubmit: (values) => onSubmit(values),
+      validationSchema: RegisterSchema,
+    });
 
   return (
     <div className={styles.register}>
@@ -40,10 +41,9 @@ const Register = () => {
         <Input
           labelName="Full Name"
           type="text"
-          name="fullName"
-          value={values.fullName}
-          onChange={handleChange}
-          err={errors.fullName}
+          name="username"
+          {...getFieldProps("username")}
+          err={errors.username}
         />
 
         <Input
@@ -58,10 +58,10 @@ const Register = () => {
         <Input
           labelName="Phone Number"
           type="tel"
-          name="phoneNumber"
-          value={values.phoneNumber}
+          name="phone"
+          value={values.phone}
           onChange={handleChange}
-          err={errors.phoneNumber}
+          err={errors.phone}
         />
 
         <Input
@@ -73,7 +73,7 @@ const Register = () => {
           err={errors.password}
         />
 
-        {error && <p className="to-red-600">{error}</p>}
+        {err && <p className="to-red-600">{err}</p>}
         <Button
           className="mt-5 cursor-pointer"
           type="submit"

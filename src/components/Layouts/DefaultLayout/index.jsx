@@ -1,6 +1,7 @@
 import SideBar from "./SideBar/SideBar.jsx";
 import styles from "./DefaultLayout.module.scss";
 import Header from "./Header/index.jsx";
+import React, { useContext } from "react";
 
 const DefaultLayout = ({ children }) => {
   return (
