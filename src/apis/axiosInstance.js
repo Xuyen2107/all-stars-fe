@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const axiosInstance = axios.create({
-  baseURL: import.meta.env.REACT_APP_BASE_API || "http://localhost:3001/api/v1",
+  baseURL: import.meta.env.REACT_APP_BASE_API || "https://all-stars-be-8qlp.onrender.com/api/v1",
   timeout: 30000,
 });
 

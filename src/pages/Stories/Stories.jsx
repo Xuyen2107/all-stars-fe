@@ -1,13 +1,32 @@
+import { useEffect, useState } from 'react';
+import storiesAPI from '../../apis/storiesAPI';
 import Card from '../../components/Layouts/Card/Card';
 import styles from './stories.module.scss'
+import axios from 'axios';
 
-const stories = [
-  { to: "/video/video.mp4" },
-  { to: "/video/video.mp4" },
-]
+
+
+
+// const stories = [
+//   { to: "/video/video.mp4", pic: "/images/messi.jpg", name: "Lionel Messi" },
+//   { to: "/video/video.mp4", pic: "/images/messi.jpg", name: "Lionel Messi" },
+// ]
 
 
 const Stories = () => {
+  const [stories, setStories] = useState([])
+  console.log("🚀 ~ file: Stories.jsx:18 ~ Stories ~ stories:", stories)
+
+  const storiesVid = async () => {
+    const result = await storiesAPI.getStories()
+    setStories(result?.data?.data ?? [])
+  }
+
+  useEffect(() => {
+    storiesVid()
+  }, [])
+
+
   return (
     <div className={`${styles.wrapper} flex flex-col pt-3 max-w-[85%] m-auto `} >
       <div className={styles.body}>
@@ -28,9 +47,10 @@ const Stories = () => {
       </div>
       <div className="grid grid-cols-4 grid-flow-rows gap-4 px-3 py-3">
         {stories.map((item, index) => {
+          console.log(item);
           return (
             <div>
-              <Card video={item.to} />
+              <Card video={item.url} picAva={item.user.profilePicture} name={item.user.username} />
             </div>
           )
         })}
