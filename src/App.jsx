@@ -1,30 +1,42 @@
+import React, { useContext } from "react";
 import { Routes, Route } from "react-router-dom";
-import AuthState from "./context/authContext/authState.jsx";
-import Layout from "./components/Layouts/DefaultLayout/index.jsx";
-import { PublicRoutes } from "./routes/index.jsx";
-import "./Global.css";
+import { AuthenticatedRoutes, UnAuthenticatedRoutes } from "./routes/route.js";
+import DefaultLayout from "./components/layouts/DefaultLayout/index.jsx";
+import AuthContext from "./context/authContext/authContext.js";
 
 const App = () => {
-  return (
-    <AuthState>
-      <Routes>
-        {PublicRoutes.map((route, index) => {
-          const Page = route.component;
-          return (
+  const { auth } = useContext(AuthContext);
+
+  if (auth) {
+    const { isAuthenticated } = auth;
+    if (isAuthenticated === true) {
+      return (
+        <Routes>
+          {AuthenticatedRoutes.map((route, idx) => (
             <Route
-              key={index}
+              key={idx}
               path={route.path}
               element={
-                <Layout>
-                  <Page />
-                </Layout>
+                <DefaultLayout>
+                  <route.component />
+                </DefaultLayout>
               }
             />
-          );
-        })}
-      </Routes>
-    </AuthState>
-  );
+          ))}
+        </Routes>
+      );
+    } else if (isAuthenticated === false) {
+      return (
+        <Routes>
+          {UnAuthenticatedRoutes.map((route, idx) => (
+            <Route key={idx} path={route.path} element={<route.component />} />
+          ))}
+        </Routes>
+      );
+    }
+
+    return <div>Loading...</div>;
+  }
 };
 
 export default App;

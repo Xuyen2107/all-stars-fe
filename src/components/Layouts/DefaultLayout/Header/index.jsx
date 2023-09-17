@@ -50,10 +50,10 @@ const Header = () => {
 
         <div className={cx("actions")}>
           <button className={cx("icon")}>
-            <i class="fa-regular fa-bell"></i>
+            <i className="fa-regular fa-bell"></i>
           </button>
           <button className={cx("icon")}>
-            <i class="fa-regular fa-message"></i>
+            <i className="fa-regular fa-message"></i>
           </button>
           <Link to="/login" className={cx("logo-user")}>
             <img src="http://uitheme.net/sociala/images/profile-4.png" alt="" />
