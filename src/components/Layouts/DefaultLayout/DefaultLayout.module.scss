@@ -16,3 +16,8 @@
   display: flex;
   align-items: center;
 }
+
+.hidden {
+  overflow: hidden;
+  max-height: 100vh;
+}

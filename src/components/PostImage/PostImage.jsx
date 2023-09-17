@@ -2,20 +2,19 @@ import React from "react";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import { Carousel } from "react-responsive-carousel";
 
-const PostImage = () => {
+const PostImage = ({ heightClassName, imgClassName }) => {
   const postImage = [
     "https://gotrangtri.vn/wp-content/uploads/2019/01/anh-bia-1-4.jpg",
-    "https://msmobile.com.vn/upload_images/images/tai-hinh-nen-phong-canh-thien-nhien-dep-nhat-the-gioi-10.jpg",
-    "https://toigingiuvedep.vn/wp-content/uploads/2022/03/tai-hinh-nen-phong-canh-thien-nhien-3d-cho-dien-thoai-dep-nhat.jpg",
-    "https://gotrangtri.vn/wp-content/uploads/2019/01/anh-bia-1-4.jpg",
-    "https://msmobile.com.vn/upload_images/images/tai-hinh-nen-phong-canh-thien-nhien-dep-nhat-the-gioi-10.jpg",
-    "https://toigingiuvedep.vn/wp-content/uploads/2022/03/tai-hinh-nen-phong-canh-thien-nhien-3d-cho-dien-thoai-dep-nhat.jpg",
+    // "https://msmobile.com.vn/upload_images/images/tai-hinh-nen-phong-canh-thien-nhien-dep-nhat-the-gioi-10.jpg",
+    // "https://toigingiuvedep.vn/wp-content/uploads/2022/03/tai-hinh-nen-phong-canh-thien-nhien-3d-cho-dien-thoai-dep-nhat.jpg",
+    // "https://gotrangtri.vn/wp-content/uploads/2019/01/anh-bia-1-4.jpg",
+    // "https://msmobile.com.vn/upload_images/images/tai-hinh-nen-phong-canh-thien-nhien-dep-nhat-the-gioi-10.jpg",
+    // "https://toigingiuvedep.vn/wp-content/uploads/2022/03/tai-hinh-nen-phong-canh-thien-nhien-3d-cho-dien-thoai-dep-nhat.jpg",
   ];
 
   return (
-    <div className=" h-[600px]">
+    <div className="h-full w-full">
       <Carousel
-        className="relative h-full"
         showThumbs={false}
         infiniteLoop={true}
         showStatus={false}
@@ -43,9 +42,9 @@ const PostImage = () => {
         {postImage.map((image, index) => (
           <div
             key={index}
-            className="flex items-center justify-center bg-black"
+            className={`flex items-center justify-center bg-black ${heightClassName}`}
           >
-            <img className="h-full" src={image} alt={`Image ${index}`} />
+            <img className={imgClassName} src={image} alt={`Image ${index}`} />
           </div>
         ))}
       </Carousel>
