@@ -15,7 +15,7 @@ const PostImage = () => {
   return (
     <div className=" h-[600px]">
       <Carousel
-        className="relative h-full"
+        className="relative h-full object-cover"
         showThumbs={false}
         infiniteLoop={true}
         showStatus={false}

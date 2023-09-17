@@ -2,8 +2,7 @@ import { useEffect, useState } from 'react';
 import storiesAPI from '../../apis/storiesAPI';
 import Card from '../../components/Layouts/Card/Card';
 import styles from './stories.module.scss'
-import axios from 'axios';
-
+import StoriesClick from '../../components/StoriesClick/StoriesClick';
 
 
 
@@ -15,12 +14,12 @@ import axios from 'axios';
 
 const Stories = () => {
   const [stories, setStories] = useState([])
-  console.log("🚀 ~ file: Stories.jsx:18 ~ Stories ~ stories:", stories)
 
   const storiesVid = async () => {
     const result = await storiesAPI.getStories()
     setStories(result?.data?.data ?? [])
   }
+
 
   useEffect(() => {
     storiesVid()
@@ -28,7 +27,7 @@ const Stories = () => {
 
 
   return (
-    <div className={`${styles.wrapper} flex flex-col pt-3 max-w-[85%] m-auto `} >
+    <div className={`${styles.wrapper} flex flex-col pt-3 max-w-[85%] mx-auto relative `} >
       <div className={styles.body}>
         <div className='flex-[9]'>Stories</div>
         <div className={`${styles.boxIcon} flex-[2]`}>
@@ -50,11 +49,13 @@ const Stories = () => {
           console.log(item);
           return (
             <div>
-              <Card video={item.url} picAva={item.user.profilePicture} name={item.user.username} />
+              <Card onStoriesFullView={onStoriesFullView} video={item.url} picAva={item.user.profilePicture} name={item.user.username} />
             </div>
+
           )
         })}
       </div>
+      <StoriesClick open={open} />
     </div>
   );
 };

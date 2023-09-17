@@ -1,8 +1,11 @@
-import { useEffect, useRef } from "react"
+import { useEffect, useRef, useState } from "react"
+import StoriesClick from "../../StoriesClick/StoriesClick"
 
 
 
-const Card = ({ video, picAva, name }) => {
+const Card = ({ video, picAva, name, type, onStoriesFullView }) => {
+
+    // const [type, setType] = useState(type)
 
     // const ref = useRef(null)
     // useEffect(() => {
@@ -27,9 +30,8 @@ const Card = ({ video, picAva, name }) => {
     // }, [ref])
 
     return (
-        <div className=" h-80 w-full block overflow-hidden mb-4 rounded-md relative border-2 border-solid border-slate-400">
-            <img src={video} className="h-full object-cover">
-            </img>
+        <div onClick={onStoriesFullView} className=" h-80 w-full block overflow-hidden mb-4 rounded-md relative border-2 border-solid border-slate-400">
+            <img src={video} className="h-full object-cover"></img> :
             {/* <video ref={ref} loop className="h-full object-cover">
                 <source src={video} type="video/mp4"></source>
             </video> */}
@@ -41,8 +43,6 @@ const Card = ({ video, picAva, name }) => {
                 <div className="text-gray-700">
                     <p>{name}</p>
                 </div>
-
-
             </div>
         </div>
     )

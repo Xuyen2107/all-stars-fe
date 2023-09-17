@@ -34,7 +34,6 @@ const App = () => {
         </Routes>
       );
     }
-
     return <div>Loading...</div>;
   }
 };
