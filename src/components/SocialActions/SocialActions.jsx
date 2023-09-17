@@ -1,6 +1,4 @@
-import React, { useContext, useState } from "react";
-import styles from "./SocialActions.module.css";
-import PostContext from "../../context/postContext/postContext";
+import React, { useState } from "react";
 
 const SocialActions = ({
   handleLikeClick,
@@ -11,7 +9,7 @@ const SocialActions = ({
 }) => {
   const [isLike, setIsLike] = useState(false);
   return (
-    <div className="flex justify-between border-y-2 border-gray-300 py-1 my-2">
+    <div className="flex justify-between border-y-2 border-gray-300 py-1 w-full">
       <div className="flex gap-10">
         <button
           className="flex gap-1 px-2 py-1 hover:bg-gray-200"

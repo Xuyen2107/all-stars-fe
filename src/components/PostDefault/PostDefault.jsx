@@ -1,13 +1,12 @@
 import React, { useState } from "react";
 import PropTypes from "prop-types";
-import styles from "./PostDefault.module.css";
 
-const PostDefault = ({ image }) => {
+const PostDefault = () => {
   const [more, setMore] = useState(false);
 
   return (
-    <div className="flex flex-col">
-      <div className="flex justify-between items-center mb-2">
+    <div className="flex flex-col gap-2">
+      <div className="flex justify-between items-center">
         <div className="flex items-center gap-2">
           <img
             className="w-10 h-10 rounded-full"
@@ -23,7 +22,7 @@ const PostDefault = ({ image }) => {
           <i className="fa-solid fa-ellipsis"></i>
         </button>
       </div>
-      <div className="flex mb-2">
+      <div className="flex">
         <p
           className={
             more

@@ -1,12 +1,12 @@
 import React, { useContext } from "react";
 import { Routes, Route } from "react-router-dom";
 import { AuthenticatedRoutes, UnAuthenticatedRoutes } from "./routes/route.js";
-import DefaultLayout from "./components/Layouts/DefaultLayout/index.jsx";
+import DefaultLayout from "./components/layouts/DefaultLayout/index.jsx";
 import AuthContext from "./context/authContext/authContext.js";
 
 const App = () => {
   const { auth } = useContext(AuthContext);
-  console.log(auth);
+
   if (auth) {
     const { isAuthenticated } = auth;
     if (isAuthenticated === true) {
