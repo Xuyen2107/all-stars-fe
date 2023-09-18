@@ -5,7 +5,7 @@ import propTypes from "prop-types";
 
 const AuthState = ({ children }) => {
   const [auth, setAuth] = useState({});
-  const [show, setShow] = useState(false);
+  const [show, setShow] = useState("");
 
   useEffect(() => {
     const accessToken = localStorage.getItem("accessToken");

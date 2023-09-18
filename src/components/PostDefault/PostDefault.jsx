@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import PropTypes from "prop-types";
 
-const PostDefault = () => {
+const PostDefault = ({ name, content }) => {
   const [more, setMore] = useState(false);
 
   return (
@@ -14,7 +14,7 @@ const PostDefault = () => {
             alt=""
           />
           <div className="flex flex-col text-base leading-5">
-            <span className="font-medium">Anthony Daugloi</span>
+            <span className="font-medium">{name}</span>
             <span className="text-xs">2 hour ago</span>
           </div>
         </div>
@@ -30,9 +30,7 @@ const PostDefault = () => {
               : "overflow-hidden whitespace-nowrap text-ellipsis max-w-full"
           }
         >
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi nulla
-          dolor, ornare at commodo non, feugiat non nisi. Phasellus faucibus
-          mollis pharetra. Proin blandit ac massa sed rhoncus
+          {content}
         </p>
         {!more && (
           <button
