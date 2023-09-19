@@ -1,5 +1,13 @@
+import NewFeed from "../../components/NewFeed/NewFeed";
+import CreatePost from "./CreatePost/CreatePost";
+
 const Home = () => {
-  return <h1>Home Page</h1>;
+  return (
+    <>
+      <CreatePost />
+      <NewFeed />
+    </>
+  );
 };
 
 export default Home;

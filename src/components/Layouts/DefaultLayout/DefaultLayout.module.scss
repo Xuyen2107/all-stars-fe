@@ -1,15 +1,25 @@
 .wrapper {
   display: flex;
-  align-items: center;
   flex-direction: column;
 }
+
 .container {
+  flex: 1;
+  height: 100%;
   width: 100%;
   display: flex;
   padding: 15px;
 }
+
 .content {
   flex: 1;
-  background-color: #ccc;
   min-height: 1000px;
+  padding-left: 296px;
+  // display: flex;
+  align-items: center;
+}
+
+.hidden {
+  overflow: hidden;
+  max-height: 100vh;
 }

@@ -1,0 +1,136 @@
+.wrapper {
+    margin-left: 100px;
+    margin-right: 280px;
+    padding: 10px;
+    border-radius: 15px;
+    width: calc(100% - 280px);
+    background-color: transparent;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.05);
+}
+
+.header {
+    display: flex;
+    color: #1e74fd;
+    height: 35px;
+    line-height: 35px;
+    cursor: pointer;
+
+    p {
+        margin-left: 1rem;
+        color: #adb5bd !important;
+        font-size: 12px;
+        font-weight: 600;
+    }
+}
+
+.icon-circle {
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    text-align: center;
+    background-color: #f5f5f5;
+}
+
+.content {
+    display: flex;
+    position: relative;
+    margin-top: 16px;
+}
+
+.avatar {
+    img {
+        position: absolute;
+        margin-top: 10px;
+        margin-left: 16px;
+        object-fit: cover;
+        width: 30px;
+        height: 30px;
+        border-radius: 50%;
+        line-height: 30px;
+    }
+}
+
+.input-txt {
+    border: 2px #f1f1f1 solid;
+    border-radius: 15px;
+    height: 100px;
+    padding-left: 60px !important;
+    padding: 15px;
+    font-size: 12px;
+    color: #adb5bd;
+    font-weight: 500;
+}
+
+.actions {
+    display: flex;
+    margin-top: 16px;
+
+    li {
+        cursor: pointer;
+    }
+}
+
+.icon {
+    display: flex;
+    font-size: 20px;
+    align-items: center;
+
+    i {
+        color: #e50202;
+    }
+
+    p {
+        margin-left: 10px;
+        margin-right: 20px;
+        font-size: 12px;
+        line-height: 20px;
+        font-weight: 500;
+        color: #495057;
+    }
+}
+
+.more {
+    margin-left: auto;
+    color: #495057;
+    font-size: 20px;
+    width: 45px;
+    height: 45px;
+    background-color: #f5f5f5;
+    line-height: 45px;
+    text-align: center;
+    border-radius: 50%;
+}
+
+.selected-images {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.show-img {
+    width: calc(33.33% - 10px);
+    margin-left: 10px;
+    margin-top: 10px;
+    border-radius: 10px;
+}
+
+.inp-file {
+    display: none;
+}
+
+.btn-sub {
+    margin-left: auto;
+    color: #495057;
+    font-size: 20px;
+    width: 30px;
+    height: 30px;
+    background-color: #f5f5f5;
+    line-height: 30px;
+    text-align: center;
+    border-radius: 50%;
+
+    &:hover {
+        background-color: #495057;
+        color: #f5f5f5;
+
+    }
+}

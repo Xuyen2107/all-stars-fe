@@ -1,10 +1,13 @@
 import SideBar from "./SideBar/SideBar.jsx";
 import styles from "./DefaultLayout.module.scss";
 import Header from "./Header/index.jsx";
+import React, { useContext, useState } from "react";
+import AuthContext from "../../../context/authContext/authContext.js";
 
 const DefaultLayout = ({ children }) => {
+  const { hiddenBody } = useContext(AuthContext);
   return (
-    <div className={styles.wrapper}>
+    <div className={hiddenBody ? styles.hidden : styles.wrapper}>
       <Header />
       <div className={styles.container}>
         <SideBar />
