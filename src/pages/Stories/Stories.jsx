@@ -6,6 +6,7 @@ import StoriesClick from '../../components/StoriesClick/StoriesClick';
 
 
 
+
 // const stories = [
 //   { to: "/video/video.mp4", pic: "/images/messi.jpg", name: "Lionel Messi" },
 //   { to: "/video/video.mp4", pic: "/images/messi.jpg", name: "Lionel Messi" },
@@ -14,10 +15,16 @@ import StoriesClick from '../../components/StoriesClick/StoriesClick';
 
 const Stories = () => {
   const [stories, setStories] = useState([])
+  const [open, setOpen] = useState(false)
 
+
+  const onStoriesFullView = () => {
+    setOpen(!open)
+  }
   const storiesVid = async () => {
     const result = await storiesAPI.getStories()
-    setStories(result?.data?.data ?? [])
+    console.log('result', result);
+    setStories(result?.data?.data || [])
   }
 
 
@@ -49,13 +56,12 @@ const Stories = () => {
           console.log(item);
           return (
             <div>
-              <Card onStoriesFullView={onStoriesFullView} video={item.url} picAva={item.user.profilePicture} name={item.user.username} />
+              <Card onStoriesFullView={onStoriesFullView} type={item.type} url={item.url} picAva={item.user.profilePicture} name={item.user.username} />
             </div>
-
           )
         })}
       </div>
-      <StoriesClick open={open} />
+      <StoriesClick open={open} listStr={stories} />
     </div>
   );
 };

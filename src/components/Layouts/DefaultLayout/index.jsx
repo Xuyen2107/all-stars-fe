@@ -6,7 +6,6 @@ import AuthContext from "../../../context/authContext/authContext.js";
 
 const DefaultLayout = ({ children }) => {
   const { show } = useContext(AuthContext);
-  console.log(show);
   return (
     <div className={show ? styles.hidden : styles.wrapper}>
       <Header />
