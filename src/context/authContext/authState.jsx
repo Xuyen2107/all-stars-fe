@@ -5,7 +5,7 @@ import propTypes from "prop-types";
 
 const AuthState = ({ children }) => {
   const [auth, setAuth] = useState({});
-  const [show, setShow] = useState(false);
+  const [hiddenBody, setHiddenBody] = useState(false);
 
   useEffect(() => {
     const accessToken = localStorage.getItem("accessToken");
@@ -47,10 +47,10 @@ const AuthState = ({ children }) => {
     <AuthContext.Provider
       value={{
         auth,
-        show,
+        hiddenBody,
         handleLogin,
         handleLogout,
-        setShow,
+        setHiddenBody,
       }}
     >
       {children}

@@ -1,9 +1,10 @@
 .wrapper {
   display: flex;
-  align-items: center;
   flex-direction: column;
 }
 .container {
+  flex: 1;
+  height: 100%;
   width: 100%;
   display: flex;
   padding: 15px;
@@ -12,7 +13,6 @@
   flex: 1;
   min-height: 1000px;
   padding-left: 296px;
-  padding-top: 100px;
   display: flex;
   align-items: center;
 }

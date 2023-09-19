@@ -8,12 +8,12 @@ const ItemSB = ({ title, leftIcon, path }) => {
   };
   return (
     <div
-      className={`${styles.item} flex items-center`}
+      className={`${styles.item} flex items-center hover:bg-gray-200 cursor-pointer rounded-lg  `}
       onClick={() => handleTransferPage(path)}
     >
       <span className={`${styles.iconLeft} bg-blue-300 me-3`}>{leftIcon}</span>
       <>
-        <p className="hover:bg-sky-700 cursor-pointer">{title}</p>
+        <p>{title}</p>
       </>
     </div>
   );
