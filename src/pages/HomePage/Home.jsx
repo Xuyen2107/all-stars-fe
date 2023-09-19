@@ -7,9 +7,15 @@ import AuthContext from "../../context/authContext/authContext";
 import postAPI from "../../apis/postAPI";
 
 const Home = () => {
-  const { setShow } = useContext(AuthContext);
+  const { setHiddenBody } = useContext(AuthContext);
   const [allPost, setAllPost] = useState([]);
-  const [postOne, setPostOne] = useState(null);
+  const [postOne, setPostOne] = useState();
+  const [likeNumber, setLikeNumber] = useState(0);
+  const [commentNumber, setCommentNumber] = useState(0);
+
+  useEffect(() => {
+    postNewFeed();
+  }, []);
 
   const postNewFeed = async () => {
     try {
@@ -20,9 +26,8 @@ const Home = () => {
       console.log(error);
     }
   };
-  useEffect(() => {
-    postNewFeed();
-  }, []);
+
+  console.log(allPost);
 
   return (
     <div className="w-full flex flex-col gap-8 items-center justify-start ">
@@ -36,15 +41,17 @@ const Home = () => {
               <PostImage
                 heightClassName="h-[600px]"
                 imgClassName="w-full h-full"
-                postImage={post.image}
+                postImage={post?.images}
               />
             </div>
             <div>
               <SocialActions
                 handleCommentClick={() => {
                   setPostOne(post);
-                  setShow(true);
+                  setHiddenBody(true);
                 }}
+                likeNumber={post?.likes?.length}
+                commentNumber={post?.comments?.length}
               />
             </div>
           </div>
@@ -56,7 +63,7 @@ const Home = () => {
             post={postOne}
             handleCloseClick={() => {
               setPostOne(null);
-              setShow(false);
+              setHiddenBody(false);
             }}
           />
         </div>

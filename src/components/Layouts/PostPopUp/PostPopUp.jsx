@@ -5,9 +5,8 @@ import SocialActions from "../../SocialActions/SocialActions";
 import PostImage from "../../PostImage/PostImage";
 
 const PostPopUp = ({ handleCloseClick, post }) => {
-  console.log(post);
   return (
-    <div className=" fixed w-full h-screen top-0 left-0 z-10">
+    <div className=" fixed w-full h-screen top-0 left-0 z-10 bg-white">
       <div className="relative h-full w-full flex flex-col">
         <div className="relative grid place-items-center py-3 border-b-2 bg-white text-2xl font-bold">
           <span>{post.user.username}'s Post</span>
@@ -24,13 +23,16 @@ const PostPopUp = ({ handleCloseClick, post }) => {
             <PostImage
               heightClassName="h-[95vh]"
               imgClassName="h-auto"
-              postImage={post.image}
+              postImage={post.images}
             />
           </div>
           <div className="relative w-[30%]  p-2 overflow-hidden bg-white overflow-y-auto">
             <PostDefault content={post.content} />
             <div className="my-2">
-              <SocialActions />
+              <SocialActions
+                likeNumber={post?.likes?.length}
+                commentNumber={post?.comments?.length}
+              />
             </div>
             <Comment />
             <Comment />

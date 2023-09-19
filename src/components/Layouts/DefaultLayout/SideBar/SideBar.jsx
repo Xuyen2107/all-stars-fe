@@ -84,7 +84,7 @@ const SideBar = () => {
             ))}
           </NavLeft>
         </div>
-        <div>
+        <div className={styles.wrapper}>
           <NavLeft>
             {morePages.map((item, index) => {
               return (
@@ -97,7 +97,7 @@ const SideBar = () => {
             })}
           </NavLeft>
         </div>
-        <div>
+        <div className={styles.wrapper}>
           <NavLeft>
             {Account.map((item, index) => {
               return (
