@@ -2,15 +2,8 @@ import React from "react";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import { Carousel } from "react-responsive-carousel";
 
-const PostImage = ({ heightClassName, imgClassName }) => {
-  const postImage = [
-    "https://gotrangtri.vn/wp-content/uploads/2019/01/anh-bia-1-4.jpg",
-    // "https://msmobile.com.vn/upload_images/images/tai-hinh-nen-phong-canh-thien-nhien-dep-nhat-the-gioi-10.jpg",
-    // "https://toigingiuvedep.vn/wp-content/uploads/2022/03/tai-hinh-nen-phong-canh-thien-nhien-3d-cho-dien-thoai-dep-nhat.jpg",
-    // "https://gotrangtri.vn/wp-content/uploads/2019/01/anh-bia-1-4.jpg",
-    // "https://msmobile.com.vn/upload_images/images/tai-hinh-nen-phong-canh-thien-nhien-dep-nhat-the-gioi-10.jpg",
-    // "https://toigingiuvedep.vn/wp-content/uploads/2022/03/tai-hinh-nen-phong-canh-thien-nhien-3d-cho-dien-thoai-dep-nhat.jpg",
-  ];
+const PostImage = ({ heightClassName, imgClassName, postImage }) => {
+  const showIndicators = postImage.length > 1;
 
   return (
     <div className="h-full w-full">
@@ -18,6 +11,7 @@ const PostImage = ({ heightClassName, imgClassName }) => {
         showThumbs={false}
         infiniteLoop={true}
         showStatus={false}
+        showIndicators={showIndicators}
         renderArrowPrev={(onClickHandler, hasPrev) =>
           hasPrev && (
             <button

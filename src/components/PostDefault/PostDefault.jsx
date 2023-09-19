@@ -1,9 +1,7 @@
 import React, { useState } from "react";
 import PropTypes from "prop-types";
 
-const PostDefault = () => {
-  const [more, setMore] = useState(false);
-
+const PostDefault = ({ name, content }) => {
   return (
     <div className="flex flex-col gap-2">
       <div className="flex justify-between items-center">
@@ -11,10 +9,10 @@ const PostDefault = () => {
           <img
             className="w-10 h-10 rounded-full"
             src="https://gotrangtri.vn/wp-content/uploads/2019/01/anh-bia-1-4.jpg"
-            alt=""
+            alt="avatar"
           />
           <div className="flex flex-col text-base leading-5">
-            <span className="font-medium">Anthony Daugloi</span>
+            <span className="font-medium">{name}</span>
             <span className="text-xs">2 hour ago</span>
           </div>
         </div>
@@ -23,27 +21,7 @@ const PostDefault = () => {
         </button>
       </div>
       <div className="flex">
-        <p
-          className={
-            more
-              ? ""
-              : "overflow-hidden whitespace-nowrap text-ellipsis max-w-full"
-          }
-        >
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi nulla
-          dolor, ornare at commodo non, feugiat non nisi. Phasellus faucibus
-          mollis pharetra. Proin blandit ac massa sed rhoncus
-        </p>
-        {!more && (
-          <button
-            className="whitespace-nowrap"
-            onClick={() => {
-              setMore(true);
-            }}
-          >
-            [See more]
-          </button>
-        )}
+        <p>{content}</p>
       </div>
     </div>
   );

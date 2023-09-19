@@ -5,10 +5,9 @@ import React, { useContext, useState } from "react";
 import AuthContext from "../../../context/authContext/authContext.js";
 
 const DefaultLayout = ({ children }) => {
-  const { show } = useContext(AuthContext);
-  console.log(show);
+  const { hiddenBody } = useContext(AuthContext);
   return (
-    <div className={show ? styles.hidden : styles.wrapper}>
+    <div className={hiddenBody ? styles.hidden : styles.wrapper}>
       <Header />
       <div className={styles.container}>
         <SideBar />

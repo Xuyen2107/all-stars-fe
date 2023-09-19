@@ -2,6 +2,7 @@ import React from "react";
 import classNames from "classnames/bind";
 import styles from "./Header.module.scss";
 import { Link } from "react-router-dom";
+import logo from "../../../../images/logo.png";
 
 const cx = classNames.bind(styles);
 
@@ -10,7 +11,7 @@ const Header = () => {
     <header className={cx("wrapper")}>
       <div className={cx("inner")}>
         <Link className={cx("logo")} to="/">
-          AllStarts
+          <img className="h-[80px]" src={logo} alt="logo" />
         </Link>
 
         <div className={cx("container-action")}>
@@ -35,7 +36,7 @@ const Header = () => {
                 <i className="fa-solid fa-bolt"></i>
               </li>
             </Link>
-            <Link to="/newfeed">
+            <Link to="/">
               <li className={cx("item-circle")}>
                 <i className="fa-solid fa-video"></i>
               </li>
@@ -55,9 +56,9 @@ const Header = () => {
           <button className={cx("icon")}>
             <i className="fa-regular fa-message"></i>
           </button>
-          <Link to="/login" className={cx("logo-user")}>
+          <button className={cx("logo-user")}>
             <img src="http://uitheme.net/sociala/images/profile-4.png" alt="" />
-          </Link>
+          </button>
         </div>
       </div>
     </header>
