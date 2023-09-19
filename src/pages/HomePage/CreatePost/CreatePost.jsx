@@ -69,7 +69,7 @@ const CreatePost = () => {
           onChange={handleChange}
         ></textarea>
         {values.content && (
-          <button type="submit" className="btn-sub">
+          <button type="submit" className={cx("btn-sub")}>
             <i class="fa-solid fa-play"></i>
           </button>
         )}
