@@ -2,6 +2,7 @@
   display: flex;
   flex-direction: column;
 }
+
 .container {
   flex: 1;
   height: 100%;
@@ -9,11 +10,12 @@
   display: flex;
   padding: 15px;
 }
+
 .content {
   flex: 1;
   min-height: 1000px;
   padding-left: 296px;
-  display: flex;
+  // display: flex;
   align-items: center;
 }
 

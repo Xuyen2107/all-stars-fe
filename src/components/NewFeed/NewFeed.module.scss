@@ -1,0 +1,123 @@
+.wrapper {
+    margin-left: 100px;
+    margin-right: 280px;
+    margin-top: 30px;
+    padding: 24px;
+    border-radius: 15px;
+    width: calc(100% - 280px);
+    background-color: transparent;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.05);
+}
+
+.header {
+    display: flex;
+    align-items: center;
+    height: 50px;
+    margin-top: 10px;
+}
+
+.avatar {
+    img {
+        object-fit: cover;
+        width: 50px;
+        height: 50px;
+        line-height: 50px;
+        border-radius: 50%;
+    }
+}
+
+.name {
+    margin-left: 16px;
+
+    .time-onl {
+        margin-top: 10px;
+        color: #adb5bd;
+    }
+}
+
+.body {
+    margin-top: 16px;
+}
+
+.content {
+    color: #adb5bd;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 1.6;
+}
+
+.content-hide {
+    height: 70px;
+    overflow: hidden;
+}
+
+.btn-seemore {
+    color: #1e74fd;
+    font-size: 12px;
+    font-weight: 400;
+}
+
+.img-group {
+    display: flex;
+    margin-top: 16px;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.img-content {
+    width: calc(33.33% - 10px);
+    margin-right: 10px;
+    position: relative;
+
+    img {
+        border-radius: 10px;
+        width: 100%;
+        height: auto;
+    }
+
+    &:nth-child(3) {
+        img {
+            filter: blur(2px);
+        }
+
+        &::after {
+            content: "+";
+            position: absolute;
+            cursor: pointer;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: rgba(0, 0, 0, 0.7);
+            color: white;
+            border-radius: 50%;
+            padding: 5px 10px;
+        }
+    }
+
+    &:nth-child(n+4) {
+        img {
+            display: none;
+        }
+    }
+}
+
+.actions {
+    display: flex;
+    margin-top: 16px;
+    font-size: 14px;
+}
+
+.interact {
+    display: flex;
+    margin-right: 22px;
+
+    i {
+        color: #e44d26;
+        font-size: 20px;
+        margin-right: 6px;
+    }
+
+    p {
+        line-height: 20px;
+    }
+}

@@ -1,7 +1,7 @@
 import React from "react";
 import classNames from "classnames/bind";
-import { Link } from "react-router-dom";
 import styles from "./Header.module.scss";
+import { Link } from "react-router-dom";
 import logo from "../../../../images/logo.png";
 
 const cx = classNames.bind(styles);
@@ -14,15 +14,39 @@ const Header = () => {
           <img className="h-[80px]" src={logo} alt="logo" />
         </Link>
 
-        <div className={cx("search")}>
-          <button className={cx("search-btn", "text-gray-400 font-sm")}>
-            <i className="fa-solid fa-magnifying-glass"></i>
-          </button>
-          <input
-            className="font-xsss"
-            type="text"
-            placeholder="Start typing to search.."
-          />
+        <div className={cx("container-action")}>
+          <div className={cx("search")}>
+            <p className={cx("search-btn", "text-gray-400 font-sm")}>
+              <i className="fa-solid fa-magnifying-glass"></i>
+            </p>
+            <input
+              className="font-xsss"
+              type="text"
+              placeholder="Start typing to search.."
+            />
+          </div>
+          <ul className={cx("action-nav")}>
+            <Link to="/">
+              <li className={cx("item-circle")}>
+                <i className="fa-solid fa-house"></i>
+              </li>
+            </Link>
+            <Link to="/stories">
+              <li className={cx("item-circle")}>
+                <i className="fa-solid fa-bolt"></i>
+              </li>
+            </Link>
+            <Link to="/">
+              <li className={cx("item-circle")}>
+                <i className="fa-solid fa-video"></i>
+              </li>
+            </Link>
+            <Link to="/popular">
+              <li className={cx("item-circle")}>
+                <i className="fa-solid fa-user"></i>
+              </li>
+            </Link>
+          </ul>
         </div>
 
         <div className={cx("actions")}>
