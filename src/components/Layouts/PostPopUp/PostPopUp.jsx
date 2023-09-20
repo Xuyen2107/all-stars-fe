@@ -1,10 +1,48 @@
-import React from "react";
+import React, { useContext, useState } from "react";
+import ReactLoading from "react-loading";
 import PostDefault from "../../PostDefault/PostDefault";
 import Comment from "../../Comment/Comment";
 import SocialActions from "../../SocialActions/SocialActions";
 import PostImage from "../../PostImage/PostImage";
+import { useFormik } from "formik";
+import postAPI from "../../../apis/postAPI";
+import AuthContext from "../../../context/authContext/authContext";
 
 const PostPopUp = ({ handleCloseClick, post }) => {
+  const { auth } = useContext(AuthContext);
+  const [loading, setLoading] = useState(false);
+
+  const formik = useFormik({
+    initialValues: {
+      postId: "",
+      user: "",
+      comment: "",
+    },
+
+    onSubmit: async (values) => {
+      try {
+        setLoading(true);
+        const formData = new FormData();
+        formData.append("postId", post._id);
+        formData.append("user", auth.user._id);
+        formData.append("comment", values.comment);
+        await postAPI.comment(formData, {
+          body: {
+            "Content-Type": "multipart/form-data",
+          },
+        });
+      } catch (error) {
+        console.log(error);
+      } finally {
+        setFieldValue("postId", "");
+        setFieldValue("user", "");
+        setFieldValue("comment", "");
+        setLoading(false);
+      }
+    },
+  });
+  const { handleSubmit, handleChange, setFieldValue, values } = formik;
+  console.log(values);
   return (
     <div className=" fixed w-full h-screen top-0 left-0 z-10 bg-white">
       <div className="relative h-full w-full flex flex-col">
@@ -27,15 +65,28 @@ const PostPopUp = ({ handleCloseClick, post }) => {
             />
           </div>
           <div className="relative w-[30%]  p-2 overflow-hidden bg-white overflow-y-auto">
-            <PostDefault content={post.content} />
+            <PostDefault
+              content={post.content}
+              name={post.user.username}
+              image={post.user.profilePicture}
+              time={post.createAt}
+            />
             <div className="my-2">
               <SocialActions
                 likeNumber={post?.likes?.length}
                 commentNumber={post?.comments?.length}
               />
             </div>
-            <Comment />
-            <Comment />
+            {post.comments &&
+              post.comments.map((comment, idx) => (
+                <Comment
+                  key={idx}
+                  name={comment.user.name}
+                  avatar={comment.user.avatar}
+                  comment={comment.comment}
+                  time={comment.createAt}
+                />
+              ))}
 
             <div className="flex justify-start fixed w-[30%] bottom-0 gap-2 border-t-2 py-4 bg-white">
               <img
@@ -43,19 +94,26 @@ const PostPopUp = ({ handleCloseClick, post }) => {
                 src="https://gotrangtri.vn/wp-content/uploads/2019/01/anh-bia-1-4.jpg"
                 alt=""
               />
-              <form
-                className="relative w-full"
-                onSubmit={(e) => {
-                  e.preventDefault();
-                }}
-              >
+              <form onSubmit={handleSubmit} className="relative w-full">
                 <textarea
+                  name="comment"
+                  onChange={handleChange}
                   className="min-h-[80px] w-full bg-gray-200 rounded-xl p-2"
                   placeholder="Write comment"
+                  value={values.comment}
                 />
-                <button className="absolute right-4 bottom-4">
-                  <i className="fa-solid fa-paper-plane text-blue-400"></i>
-                </button>
+                {loading ? (
+                  <ReactLoading
+                    type="bars"
+                    color="purple"
+                    height={40}
+                    width={40}
+                  />
+                ) : (
+                  <button className="absolute right-4 bottom-4">
+                    <i className="fa-solid fa-paper-plane text-blue-400"></i>
+                  </button>
+                )}
               </form>
             </div>
           </div>

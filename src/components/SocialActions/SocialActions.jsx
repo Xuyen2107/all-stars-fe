@@ -6,16 +6,14 @@ const SocialActions = ({
   handleShareClick,
   likeNumber,
   commentNumber,
+  isLike,
 }) => {
-  const [isLike, setIsLike] = useState(false);
   return (
     <div className="flex justify-between border-y-2 border-gray-300 py-1 w-full">
       <div className="flex gap-10">
         <button
           className="flex gap-1 px-2 py-1 hover:bg-gray-200"
-          onClick={() => {
-            handleLikeClick;
-          }}
+          onClick={handleLikeClick}
         >
           {isLike ? (
             <i className="fa-solid fa-heart text-red-500"></i>

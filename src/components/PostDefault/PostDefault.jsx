@@ -1,19 +1,18 @@
 import React, { useState } from "react";
 import PropTypes from "prop-types";
+import TimeAgo from "../TimeAgo/TimeAgo";
 
-const PostDefault = ({ name, content }) => {
+const PostDefault = ({ name, content, avatar, time }) => {
   return (
     <div className="flex flex-col gap-2">
       <div className="flex justify-between items-center">
         <div className="flex items-center gap-2">
-          <img
-            className="w-10 h-10 rounded-full"
-            src="https://gotrangtri.vn/wp-content/uploads/2019/01/anh-bia-1-4.jpg"
-            alt="avatar"
-          />
+          <img className="w-10 h-10 rounded-full" src={avatar} alt="avatar" />
           <div className="flex flex-col text-base leading-5">
             <span className="font-medium">{name}</span>
-            <span className="text-xs">2 hour ago</span>
+            <span className="text-xs">
+              <TimeAgo startTime={time} />
+            </span>
           </div>
         </div>
         <button>
