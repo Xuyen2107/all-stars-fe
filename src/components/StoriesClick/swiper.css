@@ -35,6 +35,7 @@ body {
     align-items: center;
     border-radius: 10px;
     border: 1px solid #fff;
+    /* min-width: 100% !important; */
 }
 
 .swiper-slide img {

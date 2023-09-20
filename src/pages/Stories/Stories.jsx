@@ -7,29 +7,34 @@ import StoriesClick from '../../components/StoriesClick/StoriesClick';
 
 
 
-// const stories = [
-//   { to: "/video/video.mp4", pic: "/images/messi.jpg", name: "Lionel Messi" },
-//   { to: "/video/video.mp4", pic: "/images/messi.jpg", name: "Lionel Messi" },
-// ]
+
 
 
 const Stories = () => {
   const [stories, setStories] = useState([])
   const [open, setOpen] = useState(false)
+  const [close, setClose] = useState(true)
+
 
 
   const onStoriesFullView = () => {
     setOpen(!open)
   }
-  const storiesVid = async () => {
-    const result = await storiesAPI.getStories()
-    console.log('result', result);
-    setStories(result?.data?.data || [])
+  const closeStoriesFullView = () => {
+    setOpen(!open)
   }
 
 
+
+  const storiesVid = async () => {
+    const result = await storiesAPI.getStories()
+    console.log('result', result.data.data);
+    setStories(result?.data?.data || [])
+  }
+
   useEffect(() => {
     storiesVid()
+
   }, [])
 
 
@@ -53,15 +58,21 @@ const Stories = () => {
       </div>
       <div className="grid grid-cols-4 grid-flow-rows gap-4 px-3 py-3">
         {stories.map((item, index) => {
-          console.log(item);
+          console.log(item.user._id);
           return (
             <div>
-              <Card onStoriesFullView={onStoriesFullView} type={item.type} url={item.url} picAva={item.user.profilePicture} name={item.user.username} />
+              <Card
+                screen={true}
+                onStoriesFullView={onStoriesFullView}
+                type={item.type}
+                url={item.url}
+                picAva={item.user.profilePicture}
+                name={item.user.username} />
             </div>
           )
         })}
       </div>
-      <StoriesClick open={open} listStr={stories} />
+      <StoriesClick open={open} listStr={stories} closeStr={closeStoriesFullView} />
     </div>
   );
 };

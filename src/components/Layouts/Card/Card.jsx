@@ -3,8 +3,7 @@ import StoriesClick from "../../StoriesClick/StoriesClick"
 
 
 
-const Card = ({ url, picAva, name, type, onStoriesFullView }) => {
-
+const Card = ({ url, picAva, name, type, onStoriesFullView, screen }) => {
 
     const ref = useRef(null)
     useEffect(() => {
@@ -30,25 +29,51 @@ const Card = ({ url, picAva, name, type, onStoriesFullView }) => {
     }, [ref])
 
     return (
-        <div onClick={onStoriesFullView} className=" h-80 w-full block overflow-hidden mb-4 rounded-md relative border-2 border-solid border-slate-400">
-            {type === 'image' ?
-                <img src={url} className="h-full w-full object-cover"></img> :
-                <video ref={ref} loop className="h-full w-full object-cover">
-                    <source src={url} type="video/mp4"></source>
-                </video>
-            }
+        <>
+            {
+                screen ?
+                    <div onClick={onStoriesFullView} className=" h-80 w-full block overflow-hidden mb-4 rounded-md relative border-2 border-solid border-slate-400">
+                        {type === 'image' ?
+                            <img src={url} className="h-full w-full object-cover"></img> :
+                            <video ref={ref} loop className="h-full w-full object-cover">
+                                <source src={url} type="video/mp4"></source>
+                            </video>
+                        }
 
-            <div className="absolute text-center h-40 w-full bottom-0 flex flex-col gap-4 justify-center items-center">
-                <div>
-                    <img src={picAva} className="h-14 w-14 object-cover rounded-full text-center  ">
-                    </img>
-                </div>
-                <div className="text-gray-700">
-                    <p>{name}</p>
-                </div>
-            </div>
-        </div>
+                        <div className="absolute text-center h-40 w-full bottom-0 flex flex-col gap-4 justify-center items-center">
+                            <div>
+                                <img src={picAva} className="h-14 w-14 object-cover rounded-full text-center  ">
+                                </img>
+                            </div>
+                            <div className="text-gray-700">
+                                <p>{name}</p>
+                            </div>
+                        </div>
+                    </div>
+                    :
+                    <div onClick={onStoriesFullView} className=" h-full w-full block overflow-hidden mb-4 rounded-md relative border-2 border-solid border-slate-400">
+                        {type === 'image' ?
+                            <img src={url} className="h-full w-full object-cover"></img> :
+                            <video ref={ref} loop className="h-full w-full object-cover">
+                                <source src={url} type="video/mp4"></source>
+                            </video>
+                        }
+                        <div className="absolute text-center h-40 w-full bottom-0 flex flex-col gap-4 justify-center items-center">
+                            <div className="h-[50px] w-[50px] rounded-full border-sky-400 border-2 ">
+                                <img src={picAva} className="h-4 w-4 object-cover rounded-full text-center  ">
+                                </img>
+                            </div>
+                            <div className="text-gray-700">
+                                <p>{name}</p>
+                            </div>
+                        </div>
+                    </div>
+
+            }
+        </>
     )
 }
+
+
 
 export default Card

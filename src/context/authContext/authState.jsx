@@ -18,6 +18,19 @@ const AuthState = ({ children }) => {
       handleLogin();
     }
   }, []);
+  const fetchCurrentUser = async () => {
+    try {
+      const response = await authAPI.authInfo();
+      const data = response.data;
+
+      setAuth({
+        isAuthenticated: true,
+        user: data.userInfo,
+      });
+    } catch (err) {
+      console.log(err);
+    }
+  };
 
   const handleLogin = async () => {
     try {
@@ -51,6 +64,7 @@ const AuthState = ({ children }) => {
         handleLogin,
         handleLogout,
         setShow,
+        fetchCurrentUser,
       }}
     >
       {children}
