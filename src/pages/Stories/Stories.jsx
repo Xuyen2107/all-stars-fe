@@ -1,15 +1,45 @@
+import { useEffect, useState } from 'react';
+import storiesAPI from '../../apis/storiesAPI';
 import Card from '../../components/Layouts/Card/Card';
 import styles from './stories.module.scss'
+import StoriesClick from '../../components/StoriesClick/StoriesClick';
 
-const stories = [
-  { to: "/video/video.mp4" },
-  { to: "/video/video.mp4" },
-]
+
+
+
+
 
 
 const Stories = () => {
+  const [stories, setStories] = useState([])
+  const [open, setOpen] = useState(false)
+  const [close, setClose] = useState(true)
+
+
+
+  const onStoriesFullView = () => {
+    setOpen(!open)
+  }
+  const closeStoriesFullView = () => {
+    setOpen(!open)
+  }
+
+
+
+  const storiesVid = async () => {
+    const result = await storiesAPI.getStories()
+    console.log('result', result.data.data);
+    setStories(result?.data?.data || [])
+  }
+
+  useEffect(() => {
+    storiesVid()
+
+  }, [])
+
+
   return (
-    <div className={`${styles.wrapper} flex flex-col pt-3 max-w-[85%] m-auto `} >
+    <div className={`${styles.wrapper} flex flex-col pt-3 max-w-[85%] mx-auto relative `} >
       <div className={styles.body}>
         <div className='flex-[9]'>Stories</div>
         <div className={`${styles.boxIcon} flex-[2]`}>
@@ -28,13 +58,21 @@ const Stories = () => {
       </div>
       <div className="grid grid-cols-4 grid-flow-rows gap-4 px-3 py-3">
         {stories.map((item, index) => {
+          console.log(item.user._id);
           return (
             <div>
-              <Card video={item.to} />
+              <Card
+                screen={true}
+                onStoriesFullView={onStoriesFullView}
+                type={item.type}
+                url={item.url}
+                picAva={item.user.profilePicture}
+                name={item.user.username} />
             </div>
           )
         })}
       </div>
+      <StoriesClick open={open} listStr={stories} closeStr={closeStoriesFullView} />
     </div>
   );
 };

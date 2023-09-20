@@ -62,7 +62,7 @@ const Header = () => {
           </button>
           <button className={cx("logo-user")}>
             <img
-              className="w-20 h-20 rounded-full"
+              className="w-16 h-16 rounded-full"
               src={auth.user.profilePicture}
               alt="avatar"
             />

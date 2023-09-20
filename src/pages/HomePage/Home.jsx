@@ -1,4 +1,3 @@
-import CreatePost from "./CreatePost/CreatePost";
 import { useContext, useEffect, useState } from "react";
 import PostDefault from "../../components/PostDefault/PostDefault";
 import SocialActions from "../../components/SocialActions/SocialActions";
@@ -6,15 +5,17 @@ import PostPopUp from "../../components/layouts/PostPopUp/PostPopUp";
 import PostImage from "../../components/PostImage/PostImage";
 import AuthContext from "../../context/authContext/authContext";
 import postAPI from "../../apis/postAPI";
+import SlideStories from "../../components/SlideStories/SlideStories";
+import CreatePost from "./CreatePost/CreatePost";
 
 const Home = () => {
   const { auth } = useContext(AuthContext);
   const { setHiddenBody } = useContext(AuthContext);
   const [allPost, setAllPost] = useState([]);
   const [postOne, setPostOne] = useState();
-  const [isLike, setIsLike] = useState(false);
   const [id, setId] = useState("");
-  const [commentNumber, setCommentNumber] = useState(0);
+  const { show, setShow } = useContext(AuthContext);
+  const [open, setOpen] = useState(false);
 
   useEffect(() => {
     postNewFeed();
@@ -29,7 +30,7 @@ const Home = () => {
       console.log(error);
     }
   };
-  console.log(auth.user._id);
+
   const likeAction = async (postId) => {
     try {
       const res = await postAPI.like(postId, {
@@ -45,11 +46,28 @@ const Home = () => {
       likeAction(id);
     }
   }, [id]);
-  console.log(123, id);
+
+  const post = async () => {
+    try {
+      const response = await postAPI.getAllPost();
+      const data = response?.data?.data;
+      console.log(data);
+      setAllPost(data.reverse());
+    } catch (error) {
+      console.log(error);
+    }
+  };
+  useEffect(() => {
+    post();
+  }, []);
+
   return (
     <>
       <div className="w-full flex justify-center ">
         <div className="w-[800px] flex flex-col gap-8">
+          <div>
+            <SlideStories />
+          </div>
           <CreatePost />
           {allPost &&
             allPost.map((post, idx) => (

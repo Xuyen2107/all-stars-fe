@@ -13,7 +13,7 @@ const ItemSB = ({ title, leftIcon, path }) => {
     >
       <span className={`${styles.iconLeft} bg-blue-300 me-3`}>{leftIcon}</span>
       <>
-        <p>{title}</p>
+        <p className="hover:text-blue-600  cursor-pointer">{title}</p>
       </>
     </div>
   );
