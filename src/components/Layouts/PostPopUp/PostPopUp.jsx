@@ -4,12 +4,12 @@ import Comment from "../../Comment/Comment";
 import SocialActions from "../../SocialActions/SocialActions";
 import PostImage from "../../PostImage/PostImage";
 
-const PostPopUp = ({ handleCloseClick }) => {
+const PostPopUp = ({ handleCloseClick, post }) => {
   return (
-    <div className=" fixed w-full h-screen top-0 left-0 z-10">
+    <div className=" fixed w-full h-screen top-0 left-0 z-10 bg-white">
       <div className="relative h-full w-full flex flex-col">
         <div className="relative grid place-items-center py-3 border-b-2 bg-white text-2xl font-bold">
-          <span>Nhi's Post</span>
+          <span>{post.user.username}'s Post</span>
           <button
             className="absolute right-4 top-2 w-10 h-10 grid place-items-center text-xl bg-gray-200 rounded-full"
             onClick={handleCloseClick}
@@ -22,13 +22,17 @@ const PostPopUp = ({ handleCloseClick }) => {
           <div className="w-[70%]">
             <PostImage
               heightClassName="h-[95vh]"
-              postImage="https://gotrangtri.vn/wp-content/uploads/2019/01/anh-bia-1-4.jpg"
+              imgClassName="h-auto"
+              postImage={post.images}
             />
           </div>
           <div className="relative w-[30%]  p-2 overflow-hidden bg-white overflow-y-auto">
-            <PostDefault />
+            <PostDefault content={post.content} />
             <div className="my-2">
-              <SocialActions />
+              <SocialActions
+                likeNumber={post?.likes?.length}
+                commentNumber={post?.comments?.length}
+              />
             </div>
             <Comment />
             <Comment />

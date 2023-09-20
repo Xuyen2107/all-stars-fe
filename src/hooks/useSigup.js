@@ -12,7 +12,6 @@ const useSignup = () => {
       setLoading(true);
       setErr(null);
       const res = await authAPI.register(values);
-      console.log("res:", res);
       navigate("/login");
     } catch (err) {
       console.log(err);
