@@ -1,12 +1,16 @@
-import React from "react";
+import React, { useContext, useState } from "react";
 import classNames from "classnames/bind";
 import { Link } from "react-router-dom";
 import styles from "./Header.module.scss";
 import logo from "../../../../images/logo.png";
+import AuthContext from "../../../../context/authContext/authContext";
 
 const cx = classNames.bind(styles);
 
 const Header = () => {
+  const { auth } = useContext(AuthContext);
+  console.log(auth);
+
   return (
     <header className={cx("wrapper")}>
       <div className={cx("inner")}>
@@ -33,7 +37,12 @@ const Header = () => {
             <i className="fa-regular fa-message"></i>
           </button>
           <button className={cx("logo-user")}>
-            <img src="http://uitheme.net/sociala/images/profile-4.png" alt="" />
+            <img
+              className="w-20 h-20 rounded-full"
+              src={auth.user.profilePicture}
+              alt="avatar"
+            />
+            <span className="text-xl font-medium">Hello {auth.user.username}</span>
           </button>
         </div>
       </div>

@@ -12,9 +12,11 @@ const RegisterSchema = Yup.object().shape({
     .email("Email does not valid")
     .required("Email is required"),
   phone: Yup.string()
-    .matches(/^0\d{9}$/, "not")
-    .required(),
-  password: Yup.string().min(6).required(),
+    .matches(/^0\d{9}$/, "Phone number does not valid")
+    .required("Phone number is a required field"),
+  password: Yup.string()
+    .min(6, "Password must be at least 6 characters")
+    .required("Password is a required field"),
 });
 
 const Register = () => {
@@ -73,7 +75,7 @@ const Register = () => {
           err={errors.password}
         />
 
-        {err && <p className="to-red-600">{err}</p>}
+        {err && <p className="text-red-600 text-lg">{err}</p>}
         <Button
           className="mt-5 cursor-pointer"
           type="submit"

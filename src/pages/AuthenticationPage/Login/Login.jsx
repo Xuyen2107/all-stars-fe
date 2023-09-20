@@ -11,7 +11,7 @@ const LoginSchema = Yup.object().shape({
     .email("Email does not valid")
     .required("Email is required"),
 
-  password: Yup.string().required(),
+  password: Yup.string().required("Password is a required field"),
 });
 
 const Login = () => {
@@ -50,7 +50,7 @@ const Login = () => {
           err={errors.password}
         />
 
-        {error && <p className="to-red-600">{error}</p>}
+        {error && <p className="text-red-400 text-lg">{error}</p>}
         <Button
           className="mt-5 cursor-pointer"
           type="submit"
